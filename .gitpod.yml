@@ -6,6 +6,6 @@
 
 tasks:
   - init: npm install && pmn run build
-    command: npm run start
+    command: npm run dev
 
 

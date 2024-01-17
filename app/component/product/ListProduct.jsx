@@ -2,9 +2,9 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 import Filtter from '../header/Filtter'
-const ListProduct = ({ data }) => {
-  //console.log("listall",data.products)
-  data=data.products;
+const ListProduct = ({ datat }) => {
+  console.log("listall", datat.products)
+  const data=datat.products;
   return (
     <>
       <section className="py-12">

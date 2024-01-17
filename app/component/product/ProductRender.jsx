@@ -2,7 +2,7 @@ import React from "react";
 import Head from "../header/Head";
 import axios from "axios";
 import ListProduct from "./ListProduct";
-/*
+
 let getproduct=async()=>{
 
     //const {data} = await axios.get(`${process.env.API_URL}/api/products/`);
@@ -21,21 +21,21 @@ let getproduct=async()=>{
     }
     
   
-  }*/
+  }
 
   
 
 const ProductRender = async ({products}) => {
-  //const productData = await getproduct();
-  console.log("productData = ",products);
+  const productData = await getproduct();
+  console.log("productData = ",productData);
   return (
     <>
       <Head />
-      {products ? <ListProduct data={products} /> : <h1></h1>}
+      {productData ? <ListProduct datat={productData} /> : <h1></h1>}
     </>
   );
 };
-
+/*
 export async function getStaticProps() {
   try {
     const response = await axios.get(`${process.env.API_URL}/api/products/`);
@@ -54,5 +54,5 @@ export async function getStaticProps() {
       },
     };
   }
-}
+}*/
 export default ProductRender;
