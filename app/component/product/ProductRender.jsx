@@ -27,7 +27,8 @@ let getproduct=async()=>{
 
 const ProductRender = async ({products}) => {
   const productData = await getproduct();
-  console.log("productData = ",productData);
+  //console.log("productData = ",productData);
+  console.log("productData");
   return (
     <>
       <Head />
