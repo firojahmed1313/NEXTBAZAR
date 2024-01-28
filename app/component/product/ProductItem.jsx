@@ -3,8 +3,8 @@ import Link from "next/link";
 import StarRatings from "react-star-ratings";
 import Image from "next/image";
 
-const ProductItem =  ({ ele }) => {
-  
+const ProductItem = ({ ele }) => {
+  //console.log((ele.images)[0].public_id);
   return (
     <>
       <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5">
@@ -19,10 +19,10 @@ const ProductItem =  ({ ele }) => {
             >
               <Image
                 src={
-                    ele?.images[0]
-                      ? ele?.images[0].url? "/images/default_product.png"
-                      : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${ele.images[0].public_id}.jpg`:"/images/default_product.png"
-                  }
+
+                  (!(ele.images)[0].public_id) ? "/images/default_product.png"
+                    : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${((ele.images)[0]).public_id}.jpg`
+                }
                 alt="product anme"
                 height="240"
                 width="240"
@@ -33,7 +33,7 @@ const ProductItem =  ({ ele }) => {
             <div className="p-4">
               <Link
                 href={`/details/${ele._id}`}
-               className="hover:text-blue-600"
+                className="hover:text-blue-600"
               >
                 {ele.name}
               </Link>
@@ -74,12 +74,12 @@ const ProductItem =  ({ ele }) => {
                   Add to Cart{" "}
                 </a>
               </div>
-              
+
             </div>
           </div>
         </div>
       </article>
-     
+
 
     </>
   )

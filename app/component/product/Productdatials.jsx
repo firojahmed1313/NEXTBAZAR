@@ -49,9 +49,9 @@ const Productdatials = ({ product }) => {
                   ref={imgRef}
                   className="object-cover inline-block"
                   src={
-                    product?.images[0]
-                      ? product?.images[0].url? "/images/default_product.png"
-                      : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${product.images[0].public_id}.jpg`:"/images/default_product.png"
+                    
+                      (!(product.images)[0].public_id)? "/images/default_product.png"
+                      : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${(product.images)[0].public_id}.jpg`
                   }
                   alt="Product title"
                   width="340"

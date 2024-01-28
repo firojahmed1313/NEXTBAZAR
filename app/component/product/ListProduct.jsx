@@ -3,7 +3,8 @@ import React from 'react'
 import ProductItem from './ProductItem'
 import Filtter from '../header/Filtter'
 const ListProduct = ({ datat }) => {
-  console.log("listall", datat.products)
+  //console.log("listall", datat.products)
+  console.log("listall")
   const data=datat.products;
   return (
     <>
