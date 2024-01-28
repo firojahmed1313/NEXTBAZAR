@@ -5,7 +5,7 @@ import { createContext, useState } from "react";
 
 const CarContext = createContext();
 
-export const CartProvider = (props) => {
+export function CartProvider(props){
     const [cart ,setCart] =useState([]);
 
 
@@ -17,6 +17,8 @@ export const CartProvider = (props) => {
             value={{
                 cart,
             }} 
-        ></CarContext.Provider>
+        >
+            {props.children}
+        </CarContext.Provider>
     );
 };

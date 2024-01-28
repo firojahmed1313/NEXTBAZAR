@@ -1,5 +1,4 @@
-//import GlobalProvider from './GlobalProvider'
-import GlobalProvider from './GlobalProvider'
+import {GlobalProvider} from './GlobalProvider'
 import Footer from './component/footer/Footer'
 import Head from './component/header/Head'
 import './globals.css'
