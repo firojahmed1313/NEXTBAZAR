@@ -20,7 +20,7 @@ const SignIn = () => {
             <Navber />
             <div className="w-[90%] m-[5%] border border-red-500 ">
                 <form onSubmit={OnSubmit} className='flex flex-col justify-center align-middle border border-black w-max h-max m-auto p-20 shadow-md '>
-                    <h2 className="underline p-10 text-center font-bold text-[30px] font-serif pb-3  ">Sign In</h2>
+                    <h2 className="underline p-10 text-center font-bold text-[30px] font-serif pb-3  ">Log In</h2>
                     <div className='m-10 -10 flex justify-center align-middle border border-black rounded-[20px] w-[300px] mx-auto '>
                         <AlternateEmailIcon fontSize="large" />
                         <input placeholder='Enter Email' type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)} className="outline-none p-15 mx-5"/>

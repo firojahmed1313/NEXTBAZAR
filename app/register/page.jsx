@@ -7,15 +7,38 @@ import GppGoodIcon from '@mui/icons-material/GppGood';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
-
+import axios from 'axios';
+import { useRouter } from 'next/router';
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisiable, setIsVisiable] = useState(false);
-    const OnSubmit = (e) => {
+    //const router = useRouter();
+    const OnSubmit = async (e) => {
         e.preventDefault();
-        console.log(name,email, password);
+        console.log(name, email, password);
+        let url=`${process.env.API_URL}/api/register`
+        console.log(url)
+        try {
+            const user = await axios.post(url, { name, email, password }, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            });
+            // Process the successful response
+            console.log(user);
+            //router.push('/logIn');
+        } catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle authentication error
+                console.error('Authentication failed:', error.message);
+            } else {
+                // Handle other errors
+                console.error('Request failed:', error.message);
+            }
+        }
     }
     return (
         <>
@@ -25,15 +48,15 @@ const Register = () => {
                     <h2 className="underline p-10 text-center font-bold text-[30px] font-serif pb-3  ">Register</h2>
                     <div className='m-10 -10 flex justify-center align-middle border border-black rounded-[20px] w-[300px] mx-auto '>
                         <PersonIcon fontSize="large" />
-                        <input placeholder='Enter Name' type='text' id='name' value={name} onChange={(e)=> setName(e.target.value)} className="outline-none p-15 mx-5" />
+                        <input placeholder='Enter Name' type='text' id='name' value={name} onChange={(e) => setName(e.target.value)} className="outline-none p-15 mx-5" />
                     </div>
                     <div className='m-10 -10 flex justify-center align-middle border border-black rounded-[20px] w-[300px] mx-auto '>
                         <AlternateEmailIcon fontSize="large" />
-                        <input placeholder='Enter Email' type='email' id='email' value={email} onChange={(e)=> setEmail(e.target.value)} className="outline-none p-15 mx-5" />
+                        <input placeholder='Enter Email' type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)} className="outline-none p-15 mx-5" />
                     </div>
                     <div className='m-10 flex justify-center align-middle border border-black rounded-[20px] w-[300px] mx-auto'>
                         <GppGoodIcon fontSize="large" />
-                        <input placeholder='Enter Password' id='password' value={password} onChange={(e)=> setPassword(e.target.value)} type={(isVisiable) ? "text" : "password"} className="outline-none p-15" />
+                        <input placeholder='Enter Password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} type={(isVisiable) ? "text" : "password"} className="outline-none p-15" />
                         <div onClick={() => setIsVisiable(!isVisiable)}>
                             {(isVisiable) ? <VisibilityOffIcon fontSize="large" /> : <VisibilityIcon fontSize="large" />}
                         </div>
