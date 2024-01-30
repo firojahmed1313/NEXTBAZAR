@@ -48,11 +48,18 @@ const Navber = () => {
               </span>
             </Link>
             <Link
-              href="/login"
+              href="/signIn"
               className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
             >
               <i className="text-gray-400 w-5 fa fa-user"></i>
               <span className="hidden lg:inline ml-1">Sign in</span>
+            </Link>
+            <Link
+              href="/register"
+              className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+            >
+              <i className="text-gray-400 w-5 fa fa-user"></i>
+              <span className="hidden lg:inline ml-1">Register</span>
             </Link>
             <Link href="/me">
               <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer">

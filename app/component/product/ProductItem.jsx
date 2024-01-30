@@ -5,6 +5,8 @@ import Image from "next/image";
 
 const ProductItem = ({ ele }) => {
   //console.log((ele.images)[0].public_id);
+  const ImageUrl = ele.images;
+
   return (
     <>
       <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5">
@@ -20,8 +22,8 @@ const ProductItem = ({ ele }) => {
               <Image
                 src={
 
-                  (!(ele.images)[0].public_id) ? "/images/default_product.png"
-                    : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${((ele.images)[0]).public_id}.jpg`
+                  (!ImageUrl[0].public_id) ? "/images/default_product.png"
+                    : `http://res.cloudinary.com/shopitnow-udemy/image/upload/v1674393848/${ImageUrl[0].public_id}.jpg`
                 }
                 alt="product anme"
                 height="240"
