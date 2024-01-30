@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 
 const Registerc = () => {
@@ -13,6 +14,7 @@ const Registerc = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisiable, setIsVisiable] = useState(false);
+    //const router = useRouter();
     const OnSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email, password);
@@ -27,6 +29,7 @@ const Registerc = () => {
             });
             // Process the successful response
             console.log(user);
+            //router.push("/logIn");
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 // Handle authentication error
