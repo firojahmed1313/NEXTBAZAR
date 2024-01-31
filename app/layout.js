@@ -1,6 +1,6 @@
 import {GlobalProvider} from './GlobalProvider'
-import Footer from './component/footer/Footer'
-import Head from './component/header/Head'
+import Footer from '../component/footer/Footer'
+import Head from '../component/header/Head'
 import './globals.css'
 import { Inter } from 'next/font/google'
 

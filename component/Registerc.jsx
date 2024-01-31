@@ -6,7 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import PersonIcon from '@mui/icons-material/Person';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 const Registerc = () => {
@@ -14,11 +14,11 @@ const Registerc = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisiable, setIsVisiable] = useState(false);
-    //const router = useRouter();
+    const router = useRouter();
     const OnSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email, password);
-        let url = `${process.env.API_URL}/api/register`
+        let url = `${process.env.API_URL}/api/auth/register`
         console.log(url)
         try {
             const user = await axios.post(url, { name, email, password }, {
@@ -29,7 +29,7 @@ const Registerc = () => {
             });
             // Process the successful response
             console.log(user);
-            //router.push("/logIn");
+            router.push("/logIn");
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 // Handle authentication error

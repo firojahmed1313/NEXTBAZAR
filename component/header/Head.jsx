@@ -3,7 +3,7 @@ import Link from "next/link";
 import Search from "./Search";
 import Image from "next/image";
 //import defaultImage from '/images/default.png';
-import defaultImage from '../../../public/images/default.png';
+import defaultImage from "../../public/images/default.png";
 
 const Head = () => {
   return (
@@ -45,6 +45,7 @@ const Head = () => {
                 <Image
                   className="w-10 h-10 rounded-full"
                   src={defaultImage}
+                  alt="person icon"
                 />
                 <div className="space-y-1 font-medium">
                   <p>

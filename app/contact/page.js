@@ -1,5 +1,5 @@
 import React from 'react'
-import Navber from '../component/header/Navber'
+import Navber from '../../component/header/Navber'
 
 const page = () => {
   return (

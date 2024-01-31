@@ -1,7 +1,7 @@
 import React from 'react'
-import Productdatials from '../../component/product/Productdatials'
+import Productdatials from '../../../component/product/Productdatials'
 import axios from 'axios';
-import Navber from '../../component/header/Navber'
+import Navber from '../../../component/header/Navber'
 const getProductDetails = async (id) => {
   const { data } = await axios.get(`${process.env.API_URL}/api/products/${id}`);
   //console.log("data",data)

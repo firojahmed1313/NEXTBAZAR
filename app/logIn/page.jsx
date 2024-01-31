@@ -1,23 +1,25 @@
 "use client"
 
 import React, { useState } from 'react'
-import Navber from '../component/header/Navber'
+import Navber from '../../component/header/Navber'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isVisiable, setIsVisiable] = useState(false);
+    const router=useRouter();
     const OnSubmit =async (e) => {
         e.preventDefault();
         console.log(email, password);
-        let url = `${process.env.API_URL}/api/logIn`
+        let url = `${process.env.API_URL}/api/auth/logIn`
         try {
             const user = await axios.post(url, { email, password }, {
                 headers: {
@@ -28,6 +30,7 @@ const SignIn = () => {
             // Process the successful response
             console.log(user.data);
             Cookies.set("token",user.data.token);
+            router.push('/register')
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 // Handle authentication error

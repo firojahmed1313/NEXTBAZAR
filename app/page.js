@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import NavH from './component/header/NavH'
-import Navber from './component/header/Navber'
+import NavH from '../component/header/NavH'
+import Navber from '../component/header/Navber'
 import Link from 'next/link'
 
 export default function Home() {
