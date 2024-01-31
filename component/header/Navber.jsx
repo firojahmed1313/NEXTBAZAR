@@ -1,10 +1,32 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 //import defaultImage from '/images/default.png';
 import defaultImage from "../../public/images/default.png";
+import { destroyCookie, parseCookies } from "nookies";
+import { useRouter } from "next/navigation";
+//import Cookies from "js-cookie";
 
 const Navber = () => {
+  const [user, setUser] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    const { tokenf } = parseCookies()
+    console.log(tokenf)
+    if (tokenf) {
+
+      setUser(true);
+    }
+  }, []);
+
+  console.log("Is user logged in?", user);
+  const logoutUser = () => {
+    console.log("logout")
+    destroyCookie(null, 'tokenf');
+    router.push('/')
+  }
   return (
     <header className="bg-white py-2 border-b">
       <div className="container max-w-screen-xl mx-auto px-4">
@@ -47,20 +69,42 @@ const Navber = () => {
                 Cart (<b>0</b>)
               </span>
             </Link>
-            <Link
-              href="/logIn"
-              className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
-            >
-              <i className="text-gray-400 w-5 fa fa-user"></i>
-              <span className="hidden lg:inline ml-1">Log in</span>
-            </Link>
-            <Link
-              href="/register"
-              className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
-            >
-              <i className="text-gray-400 w-5 fa fa-user"></i>
-              <span className="hidden lg:inline ml-1">Register</span>
-            </Link>
+
+            {(!user) ?
+              <>
+                <Link
+                  href="/logIn"
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <i className="text-gray-400 w-5 fa fa-user"></i>
+                  <span className="hidden lg:inline ml-1">Log in</span>
+                </Link>
+                <Link
+                  href="/register"
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <i className="text-gray-400 w-5 fa fa-user"></i>
+                  <span className="hidden lg:inline ml-1">Register</span>
+                </Link>
+              </>
+              :
+              <>
+                <Link
+                  href="/profile"
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <i className="text-gray-400 w-5 fa fa-user"></i>
+                  <span className="hidden lg:inline ml-1">Profile</span>
+                </Link>
+                <div
+
+                  className="px-3 py-2 inline-block text-center text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-300"
+                >
+                  <i className="text-gray-400 w-5 fa fa-user"></i>
+                  <span className="hidden lg:inline ml-1 cursor-pointer" onClick={logoutUser}>LogOut</span>
+                </div>
+              </>
+            }
             <Link href="/me">
               <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer">
                 <Image className="w-10 h-10 rounded-full" src={defaultImage} alt="person icon" />

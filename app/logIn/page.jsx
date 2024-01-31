@@ -29,8 +29,8 @@ const SignIn = () => {
             });
             // Process the successful response
             console.log(user.data);
-            Cookies.set("token",user.data.token);
-            router.push('/register')
+            Cookies.set("tokenf",user.data.token);
+            router.push('/profile')
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 // Handle authentication error
